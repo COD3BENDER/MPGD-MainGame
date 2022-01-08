@@ -20,6 +20,8 @@ public class InputManager : MonoBehaviour
         groundMovement = controls.GroundMovement;
         groundMovement.HorizontalMovement.performed += ctx => horizontalInput = ctx.ReadValue<Vector2>();
         groundMovement.Jump.performed += _ => movement.OnJumpPressed();
+        groundMovement.JetpackJump.performed += _ => movement.OnJetpackJumpPressed();
+        groundMovement.JetpackJump.canceled += _ => movement.OnJetpackJumpCanceled();
         groundMovement.MouseX.performed += ctx => mouseInput.x = ctx.ReadValue<float>();
         groundMovement.MouseY.performed += ctx => mouseInput.y = ctx.ReadValue<float>();
 
